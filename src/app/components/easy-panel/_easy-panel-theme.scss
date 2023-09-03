@@ -1,0 +1,16 @@
+@use 'sass:map';
+@use '@angular/material' as mat;
+
+@import '/src/scss/material-utils';
+
+@mixin color($theme) {
+  $color-config: mat.get-color-config($theme);
+  $palette: map.get($color-config, 'background');
+  // @debug $theme;
+  app-easy-panel {
+
+    $mixForMode: if(map.get($theme, is-dark), white, black);
+
+    background-color: mix(getColorFromTheme($theme, background, background), $mixForMode, 90%);
+  }
+}
